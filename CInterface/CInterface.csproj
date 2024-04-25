@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<LangVersion>12.0</LangVersion>
+		<Platforms>x64</Platforms>
+		<PlatformTarget>x64</PlatformTarget>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<AnalysisLevel>8</AnalysisLevel>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<Features>strict</Features>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Nullable>disable</Nullable>
+		<PublishTrimmed>true</PublishTrimmed>
+		<TrimMode>full</TrimMode>
+		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+		<ILLinkTreatWarningsAsErrors>true</ILLinkTreatWarningsAsErrors>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<IsAotCompatible>true</IsAotCompatible>
+		<PublishAot>true</PublishAot>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputPath>$(ProjectDir)../output</OutputPath>
+		<TargetName>libAtari2600Hawk</TargetName>
+		<OutputType>Library</OutputType>
+		<NativeLib>Shared</NativeLib>
+		<DebugSymbols>False</DebugSymbols>
+		<DebugType>None</DebugType>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(ProjectDir)../Atari2600Hawk/Atari2600Hawk.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="$(ProjectDir)include/**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Visible>false</Visible>
+		</Content>
+	</ItemGroup>
+</Project>

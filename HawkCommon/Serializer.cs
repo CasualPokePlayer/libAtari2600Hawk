@@ -85,18 +85,19 @@ public unsafe class Serializer
 			return;
 		}
 
-		if (buffer.Length * sizeof(T) != len)
+		if (buffer.Length != len)
 		{
-			buffer = new T[len / sizeof(T)];
+			buffer = new T[len];
 		}
 
 		var bufferAsBytes = MemoryMarshal.AsBytes(buffer.AsSpan());
+		var lengthInBytes = len * sizeof(T);
 		var ofs = 0;
-		while (len > 0)
+		while (lengthInBytes > 0)
 		{
-			var done = br.Read(bufferAsBytes.Slice(ofs, len));
+			var done = br.Read(bufferAsBytes.Slice(ofs, lengthInBytes));
 			ofs += done;
-			len -= done;
+			lengthInBytes -= done;
 		}
 	}
 
